@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Sign in to Tallmadge Soccer to continue to registration.">
+<title>Sign In | Tallmadge Soccer</title>
+<link rel="stylesheet" href="/styles.css">
+<script src="/account-preview.js" defer></script>
+<script src="/club-account.js" defer></script>
+</head>
+<body>
+<svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="shop" viewBox="0 0 24 24"><path d="M5 8h14l2 13H3zM8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="fields" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 5v14M2 9h4v6H2m20-6h-4v6h4"/><circle cx="12" cy="12" r="2.5"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10m-9 11v-7h4v7"/></symbol>
+<symbol id="clipboard" viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13h16V7a2 2 0 0 0-2-2h-3M9 3h6v5H9zM8 14l3 3 5-6"/></symbol>
+<symbol id="trophy" viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0zM8 5H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4 3v6m-4 0h8"/></symbol>
+<symbol id="news" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8m-8 4h8m-8 4h4"/></symbol>
+</svg>
+<header class="top"><div class="wrap">
+<div class="brand"><svg class="crest" viewBox="150 296 841 958" aria-hidden="true">
+<defs><clipPath id="crest-outline"><path d="M216 392C388 393 427 305 570 305S752 393 925 392C964 480 985 589 982 687L980 745C979 805 963 861 939 917C870 1081 742 1198 575 1245C404 1196 273 1080 203 917C178 861 161 805 161 745L159 687C157 587 176 483 216 392Z"/></clipPath></defs>
+<path d="M216 392C388 393 427 305 570 305S752 393 925 392C964 480 985 589 982 687L980 745C979 805 963 861 939 917C870 1081 742 1198 575 1245C404 1196 273 1080 203 917C178 861 161 805 161 745L159 687C157 587 176 483 216 392Z" fill="none" stroke="#97abd5" stroke-width="15"/>
+<image href="/tallmadge-crest-source.jpeg" width="1171" height="1343" clip-path="url(#crest-outline)"/>
+</svg><div>TALLMADGE<small>SOCCER</small></div></div>
+<details class="account-menu">
+  <summary aria-label="Account menu">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </summary>
+  <div class="account-menu-panel">
+    <a href="/account.html">Account</a>
+    <a href="/sign-in.html" data-preview-signed-out>Sign In</a>
+    <a href="/create-account.html" data-preview-signed-out>Create Account</a>
+    <a href="/dashboard.html" data-preview-signed-in hidden>Dashboard</a>
+    <button type="button" data-preview-signed-in id="preview-sign-out" hidden>Sign Out</button>
+  </div>
+</details>
+<nav class="nav" aria-label="Main navigation">
+<a href="/news.html"><svg class="icon" aria-hidden="true"><use href="#news"/></svg><span>News</span></a>
+<a href="/leagues.html"><svg class="icon" aria-hidden="true"><use href="#trophy"/></svg><span>Leagues</span></a>
+<a href="/shop.html"><svg class="icon" aria-hidden="true"><use href="#shop"/></svg><span>Shop</span></a>
+<a class="fields" href="/fields.html"><svg class="icon" aria-hidden="true"><use href="#fields"/></svg><span>Fields</span></a>
+<a class="home" href="/"><svg class="icon" aria-hidden="true"><use href="#home"/></svg><span>Home</span></a>
+<a class="register" href="/sign-in.html"><svg class="icon" aria-hidden="true"><use href="#clipboard"/></svg><span>Register</span></a>
+</nav>
+</div></header>
+<main class="sign-in-page">
+  <section class="wrap sign-in-wrap" aria-labelledby="sign-in-title">
+    <a class="link" href="/">Back to Home</a>
+    <div class="sign-in-card">
+      <div class="kicker">Tallmadge Soccer · Registration</div>
+      <h1 id="sign-in-title">Sign In</h1>
+      <p>Sign in to your Tallmadge Soccer account to continue to player registration.</p>
+      <form class="sign-in-form" id="club-account-form" method="post" data-action="signin" hidden>
+        <label for="sign-in-email">Email address</label>
+        <input id="sign-in-email" name="email" type="email" autocomplete="username" required>
+        <label for="sign-in-password">Password</label>
+        <input id="sign-in-password" name="password" type="password" autocomplete="current-password" required>
+        <button class="cta" type="submit">Sign In</button>
+      </form>
+      <div class="staff-sign-in" id="club-account-session" hidden>
+        <p>Signed in as <strong id="club-account-email"></strong>.</p>
+        <button class="link" type="button" id="club-account-signout">Sign out of Tallmadge Soccer</button>
+      </div>
+      <p class="sign-in-preview" id="club-account-message" role="status"></p>
+      <div class="sign-in-secondary">
+        <button class="link" type="button" disabled>Forgot password?</button>
+        <a class="link" href="/create-account.html" data-preview-signed-out>Create an account</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="wrap"><strong>Tallmadge Soccer</strong><span>Sign In</span></div></footer>
+</body></html>

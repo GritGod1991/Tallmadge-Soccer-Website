@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Preview the Tallmadge Soccer dashboard and club roles.">
+<title>Manage Rosters | Tallmadge Soccer</title>
+<link rel="stylesheet" href="/styles.css?v=season-rosters">
+<script src="/account-preview.js?v=season-rosters" defer></script>
+<script type="module" src="/roster-editor.js"></script>
+<script type="module" src="/live-roster-editor.js"></script>
+</head>
+<body>
+<svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="shop" viewBox="0 0 24 24"><path d="M5 8h14l2 13H3zM8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="fields" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 5v14M2 9h4v6H2m20-6h-4v6h4"/><circle cx="12" cy="12" r="2.5"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10m-9 11v-7h4v7"/></symbol>
+<symbol id="clipboard" viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13h16V7a2 2 0 0 0-2-2h-3M9 3h6v5H9zM8 14l3 3 5-6"/></symbol>
+<symbol id="trophy" viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0zM8 5H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4 3v6m-4 0h8"/></symbol>
+<symbol id="news" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8m-8 4h8m-8 4h4"/></symbol>
+</svg>
+<header class="top"><div class="wrap">
+<div class="brand"><svg class="crest" viewBox="150 296 841 958" aria-hidden="true">
+<defs><clipPath id="crest-outline"><path d="M216 392C388 393 427 305 570 305S752 393 925 392C964 480 985 589 982 687L980 745C979 805 963 861 939 917C870 1081 742 1198 575 1245C404 1196 273 1080 203 917C178 861 161 805 161 745L159 687C157 587 176 483 216 392Z"/></clipPath></defs>
+<path d="M216 392C388 393 427 305 570 305S752 393 925 392C964 480 985 589 982 687L980 745C979 805 963 861 939 917C870 1081 742 1198 575 1245C404 1196 273 1080 203 917C178 861 161 805 161 745L159 687C157 587 176 483 216 392Z" fill="none" stroke="#97abd5" stroke-width="15"/>
+<image href="/tallmadge-crest-source.jpeg" width="1171" height="1343" clip-path="url(#crest-outline)"/>
+</svg><div>TALLMADGE<small>SOCCER</small></div></div>
+<details class="account-menu">
+  <summary aria-label="Account menu">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </summary>
+  <div class="account-menu-panel">
+    <a href="/account.html">Account</a>
+    <a href="/sign-in.html" data-preview-signed-out>Sign In</a>
+    <a href="/create-account.html" data-preview-signed-out>Create Account</a>
+    <a href="/dashboard.html" data-preview-signed-in hidden>Dashboard</a>
+    <button type="button" data-preview-signed-in id="preview-sign-out" hidden>Sign Out</button>
+  </div>
+</details>
+<nav class="nav" aria-label="Main navigation">
+<a href="/news.html"><svg class="icon" aria-hidden="true"><use href="#news"/></svg><span>News</span></a>
+<a href="/leagues.html"><svg class="icon" aria-hidden="true"><use href="#trophy"/></svg><span>Leagues</span></a>
+<a href="/shop.html"><svg class="icon" aria-hidden="true"><use href="#shop"/></svg><span>Shop</span></a>
+<a class="fields" href="/fields.html"><svg class="icon" aria-hidden="true"><use href="#fields"/></svg><span>Fields</span></a>
+<a class="home" href="/"><svg class="icon" aria-hidden="true"><use href="#home"/></svg><span>Home</span></a>
+<a class="register" href="/sign-in.html"><svg class="icon" aria-hidden="true"><use href="#clipboard"/></svg><span>Register</span></a>
+</nav>
+</div></header>
+<main id="preview-dashboard" data-roster-editor hidden>
+<section class="news-intro"><div class="wrap"><h1>Manage Rosters</h1></div></section>
+<section class="wrap team-schedule" aria-label="Roster management demo" data-demo-account>
+  <a class="link" href="/dashboard.html">Back to Dashboard</a>
+  <p class="schedule-preview">Demo editor · Use fictional player details. Drafts stay in this browser.</p>
+  <div class="field-post"><div class="kicker">Planned access · All teams</div><p>Super Admin · Admin · Manager</p></div>
+  <form class="news-form schedule-editor" id="roster-editor">
+    <label>Team<select name="team" required></select></label>
+    <h2 id="roster-editor-title">Add a player</h2>
+    <fieldset id="roster-editor-fields" disabled>
+      <legend>Player details</legend>
+      <div class="form-fields">
+        <label>Player name<input name="name" type="text" maxlength="80" required></label>
+        <label>Jersey number<input name="number" type="number" min="0" max="999" step="1" required></label>
+        <label>Birthday<input name="birthday" type="date" required></label>
+        <label>Position<input name="position" type="text" maxlength="50"></label>
+      </div>
+      <div class="schedule-editor-actions"><button class="cta" type="submit">Save Player Draft</button><button class="link" type="button" id="cancel-roster-edit" hidden>Cancel edit</button></div>
+    </fieldset>
+    <p id="roster-editor-status" role="status"></p>
+  </form>
+  <h2>Roster drafts</h2>
+  <p id="roster-drafts-empty">Choose a team to view its roster drafts.</p>
+  <ul class="roster-list" id="roster-drafts"></ul>
+</section>
+<section class="wrap team-schedule" aria-label="Live roster management" data-real-account hidden>
+  <a class="link" href="/dashboard.html" data-account-dashboard>Back to Dashboard</a>
+  <p class="schedule-preview">Player names and birthdays are for staff. Add a family display name only if the club wants it shown.</p>
+  <div class="schedule-controls"><label for="roster-season-picker">Season</label><select id="roster-season-picker" disabled></select></div>
+  <div class="schedule-controls"><label for="roster-team-picker">Team</label><select id="roster-team-picker" disabled><option value="">Choose a team</option></select></div>
+  <p><a class="link" id="roster-preview-link" hidden>Preview family view</a></p>
+  <form class="news-form schedule-editor" id="live-roster-editor">
+    <h2 id="live-roster-title">Add a player</h2>
+    <fieldset class="account-role-options" disabled>
+      <legend>Player details</legend>
+      <div class="form-fields">
+        <label>Player name (staff)<input name="name" type="text" maxlength="80" required></label>
+        <label>Jersey number<input name="number" type="number" inputmode="numeric" min="0" max="999" step="1" required></label>
+        <label>Birthday (staff, optional)<input name="birthday" type="date"></label>
+        <label>Position (optional)<input name="position" type="text" maxlength="50"></label>
+        <label>Family display name (optional)<input name="displayName" type="text" maxlength="80" placeholder="Leave blank to hide the name"></label>
+      </div>
+      <div class="schedule-editor-actions"><button class="cta" type="submit">Save Player</button><button class="link" type="button" id="live-roster-cancel" hidden>Cancel edit</button></div>
+    </fieldset>
+    <p id="live-roster-status" role="status">Loading teams and seasons…</p>
+  </form>
+  <h2>Players</h2>
+  <ul class="roster-list" id="live-roster-players"></ul>
+</section>
+</main>
+<footer class="footer"><div class="wrap"><strong>Tallmadge Soccer</strong><span>Manage Rosters</span></div></footer>
+</body></html>

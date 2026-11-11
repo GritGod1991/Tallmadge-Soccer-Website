@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Preview the Tallmadge Soccer dashboard and club roles.">
+<title>Update Schedules | Tallmadge Soccer</title>
+<link rel="stylesheet" href="/styles.css?v=away-field">
+<script src="/account-preview.js?v=schedule-access" defer></script>
+<script src="/schedule-editor.js" defer></script>
+<script type="module" src="/live-schedule-editor.js?v=away-field"></script>
+</head>
+<body>
+<svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<symbol id="shop" viewBox="0 0 24 24"><path d="M5 8h14l2 13H3zM8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="fields" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 5v14M2 9h4v6H2m20-6h-4v6h4"/><circle cx="12" cy="12" r="2.5"/></symbol>
+<symbol id="home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10m-9 11v-7h4v7"/></symbol>
+<symbol id="clipboard" viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 0 0-2 2v13h16V7a2 2 0 0 0-2-2h-3M9 3h6v5H9zM8 14l3 3 5-6"/></symbol>
+<symbol id="trophy" viewBox="0 0 24 24"><path d="M8 3h8v7a4 4 0 0 1-8 0zM8 5H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4 3v6m-4 0h8"/></symbol>
+<symbol id="news" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8m-8 4h8m-8 4h4"/></symbol>
+</svg>
+<header class="top"><div class="wrap">
+<div class="brand"><svg class="crest" viewBox="150 296 841 958" aria-hidden="true">
+<defs><clipPath id="crest-outline"><path d="M216 392C388 393 427 305 570 305S752 393 925 392C964 480 985 589 982 687L980 745C979 805 963 861 939 917C870 1081 742 1198 575 1245C404 1196 273 1080 203 917C178 861 161 805 161 745L159 687C157 587 176 483 216 392Z"/></clipPath></defs>
+<path d="M216 392C388 393 427 305 570 305S752 393 925 392C964 480 985 589 982 687L980 745C979 805 963 861 939 917C870 1081 742 1198 575 1245C404 1196 273 1080 203 917C178 861 161 805 161 745L159 687C157 587 176 483 216 392Z" fill="none" stroke="#97abd5" stroke-width="15"/>
+<image href="/tallmadge-crest-source.jpeg" width="1171" height="1343" clip-path="url(#crest-outline)"/>
+</svg><div>TALLMADGE<small>SOCCER</small></div></div>
+<details class="account-menu">
+  <summary aria-label="Account menu">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </summary>
+  <div class="account-menu-panel">
+    <a href="/account.html">Account</a>
+    <a href="/sign-in.html" data-preview-signed-out>Sign In</a>
+    <a href="/create-account.html" data-preview-signed-out>Create Account</a>
+    <a href="/dashboard.html" data-preview-signed-in hidden>Dashboard</a>
+    <button type="button" data-preview-signed-in id="preview-sign-out" hidden>Sign Out</button>
+  </div>
+</details>
+<nav class="nav" aria-label="Main navigation">
+<a href="/news.html"><svg class="icon" aria-hidden="true"><use href="#news"/></svg><span>News</span></a>
+<a href="/leagues.html"><svg class="icon" aria-hidden="true"><use href="#trophy"/></svg><span>Leagues</span></a>
+<a href="/shop.html"><svg class="icon" aria-hidden="true"><use href="#shop"/></svg><span>Shop</span></a>
+<a class="fields" href="/fields.html"><svg class="icon" aria-hidden="true"><use href="#fields"/></svg><span>Fields</span></a>
+<a class="home" href="/"><svg class="icon" aria-hidden="true"><use href="#home"/></svg><span>Home</span></a>
+<a class="register" href="/sign-in.html"><svg class="icon" aria-hidden="true"><use href="#clipboard"/></svg><span>Register</span></a>
+</nav>
+</div></header>
+<main id="preview-dashboard" data-schedule-editor hidden>
+<section class="news-intro"><div class="wrap"><h1>Update Schedules</h1></div></section>
+<section class="wrap team-schedule" aria-label="Demo schedule editor" data-demo-account>
+  <a class="link" href="/dashboard.html">Back to Dashboard</a>
+  <p class="schedule-preview">Demo editor · Draft games are saved in this browser only.</p>
+  <div class="field-post">
+    <div class="kicker">Planned access</div>
+    <p>Head Coach · Admin · Super Admin · Owner</p>
+    <label class="schedule-scope">Preview as
+      <select id="schedule-scope">
+        <option value="all">Super Admin · All teams</option>
+        <option value="coach">Head Coach · Tallmadge U10</option>
+      </select>
+    </label>
+    <p id="schedule-scope-note" hidden>Sample assignment: Tallmadge U10. The assigned team must be listed as the home or away team.</p>
+  </div>
+  <form class="news-form schedule-editor" id="schedule-editor">
+    <h2 id="schedule-editor-title">Add a game</h2>
+    <label>Division<select name="division" required><option value="">Choose a division</option><optgroup label="Rec League"><option>Minnows (U5)</option><option>Blue Frogs (U7)</option><option>Sharks (U9)</option><option>Dare Devils (U12)</option></optgroup><optgroup label="Classic Travel"><option>U9</option><option>U10</option><option>U11</option><option>U12</option><option>U13</option><option>U14</option></optgroup></select></label>
+    <div class="form-fields">
+      <label>Home team<input type="text" name="home" maxlength="80" required></label>
+      <label>Away team<input type="text" name="away" maxlength="80" required></label>
+      <label>Game date<input type="date" name="date" required></label>
+      <label>Kickoff time<input type="time" name="time" required></label>
+    </div>
+    <label>Field or location<input type="text" name="field" maxlength="120" required></label>
+    <div class="schedule-editor-actions"><button class="cta" type="submit">Save Game Draft</button><button class="link" type="button" id="cancel-game-edit" hidden>Cancel edit</button></div>
+  </form>
+  <p id="schedule-editor-status" role="status"></p>
+  <h2>Game drafts</h2>
+  <p id="schedule-drafts-empty">No game drafts yet.</p>
+  <ul class="roster-list" id="schedule-drafts"></ul>
+</section>
+<section class="wrap team-schedule" aria-label="Live schedule editor" data-real-account hidden>
+  <a class="link" href="/dashboard.html" data-account-dashboard>Back to Dashboard</a>
+  <p class="schedule-preview">Saved games appear on both team schedules. Kickoff times are Eastern.</p>
+  <p class="schedule-preview" data-schedule-teams hidden></p>
+  <div class="schedule-controls"><label for="season-picker">Season</label><select id="season-picker" disabled></select></div>
+  <form class="news-form schedule-editor" id="live-schedule-editor">
+    <h2 id="live-schedule-title">Add a game</h2>
+    <fieldset class="account-role-options" disabled>
+      <legend>Game details</legend>
+    <label>Division<select name="division" required><option value="">Choose a division</option></select></label>
+      <div class="form-fields">
+        <div>
+          <label>Home team<select name="home" required><option value="">Choose a team</option></select></label>
+          <div data-team-name="home" hidden>
+            <label>Home team name<input type="text" name="homeName" maxlength="80" disabled></label>
+          </div>
+        </div>
+        <div>
+          <label>Away team<select name="away" required><option value="">Choose a team</option></select></label>
+          <div data-team-name="away" hidden>
+            <label>Away team name<input type="text" name="awayName" maxlength="80" disabled></label>
+          </div>
+        </div>
+        <label>Game date<input type="date" name="date" required></label>
+        <label>Kickoff time (Eastern)<input type="time" name="time" required></label>
+      </div>
+      <label>Field<select name="field" required><option value="">Choose a field</option><option value="away">Away field</option></select></label>
+      <label id="away-field-entry" hidden>Away field name<input name="awayFieldName" type="text" maxlength="120" placeholder="e.g. Barlow Farm Field 5B" disabled></label>
+      <div class="schedule-editor-actions"><button class="cta" type="submit">Save Game</button><button class="link" type="button" id="live-schedule-cancel" hidden>Cancel edit</button></div>
+    </fieldset>
+  </form>
+  <p id="live-schedule-message" role="status" tabindex="-1">Loading saved schedules…</p>
+  <h2>Saved games</h2>
+  <p id="live-schedule-empty" hidden>No games have been saved yet.</p>
+  <ul class="roster-list" id="live-schedule-games"></ul>
+</section>
+</main>
+<footer class="footer"><div class="wrap"><strong>Tallmadge Soccer</strong><span>Update Schedules</span></div></footer>
+</body></html>
