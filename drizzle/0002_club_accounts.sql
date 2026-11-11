@@ -1,0 +1,5 @@
+CREATE TABLE club_accounts (
+  user_id TEXT PRIMARY KEY NOT NULL,
+  email TEXT NOT NULL,
+  first_seen_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
